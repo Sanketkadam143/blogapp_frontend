@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deletePost } from "../actions/creators";
 import { EDIT } from "../constants/actionTypes";
@@ -15,7 +15,14 @@ export default function ImgMediaCard(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   return (
-    <Card sx={{ maxWidth: "30%", minWidth: "300px", margin: "10px", flex: "1 1 auto" }}>
+    <Card
+      sx={{
+        maxWidth: "30%",
+        minWidth: "300px",
+        margin: "10px",
+        flex: "1 1 auto",
+      }}
+    >
       <CardMedia
         component="img"
         alt={props.title}
@@ -37,7 +44,7 @@ export default function ImgMediaCard(props) {
         <Button
           size="small"
           onClick={() => {
-            dispatch({ type: "EDIT", payload: props });
+            dispatch({ type: EDIT, payload: props });
             navigate("/edit");
           }}
         >
@@ -48,6 +55,5 @@ export default function ImgMediaCard(props) {
         </Button>
       </CardActions>
     </Card>
-  
   );
 }

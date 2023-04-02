@@ -1,4 +1,4 @@
-import { AUTH, ISLOGIN, ALLPOST, DELETE, EDIT } from "../constants/actionTypes";
+import { AUTH, ISLOGIN, ALLPOST, DELETE, EDIT,LOGOUT} from "../constants/actionTypes";
 import jwtDecode from "jwt-decode";
 
 function decodeJWT(token) {
@@ -47,6 +47,9 @@ const authReducer = (
 
     case EDIT:
       return { ...state, editPost: action.payload };
+    case LOGOUT:
+      localStorage.removeItem("profile");
+      return {...state, authData: [], user: false, posts: [], editPost: [] }
     default:
       return state;
   }
